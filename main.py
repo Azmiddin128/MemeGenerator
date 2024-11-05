@@ -1,3 +1,5 @@
+from sys import path_hooks
+
 from PIL import Image, ImageDraw, ImageFont
 
 print("Meme Generator Launched!")
@@ -11,6 +13,7 @@ print('List of Images:')
 print("1. Cat in restaurant")
 print("2. Cat in glasses")
 print("3. Surprised cat")
+print("4. Pew, pew, pew")
 
 chose_picture = input("Enter the number of your choice: ")
 
@@ -23,18 +26,19 @@ elif chose_picture == "2":
 elif chose_picture == "3":
     print("You chose: surprised cat")
     path_to_picture = "suprised_cat.png"
-
-print(path_to_picture)
+elif chose_picture == "4":
+    print("You chose: pew, pew, pew")
+    path_to_picture = "pew_pew_pew.png"
 
 image = Image.open(path_to_picture)
 
 draw = ImageDraw.Draw(image)
 
-path_to_font = "./Tiny5/Tiny5-Regular.ttf"
+path_to_font = "./Rubik_Wet_Paint/RubikWetPaint-Regular.ttf"
 font = ImageFont.truetype(path_to_font, size = 40)
 
-draw.text((0, 0), top_text, font = font, fill = "black")
-draw.text((0, 300), bottom_text, font = font, fill = "white")
+draw.text((0, 0), top_text, font = font, fill = "brown")
+draw.text((100, 1250), bottom_text, font = font, fill = "brown")
 
 image.save("new_meme.png")
 print("Image compiled successfully")
