@@ -1,3 +1,5 @@
+from PIL import Image, ImageDraw, ImageFont
+
 print("Meme Generator Launched!")
 
 top_text = input("Enter top text: ")
@@ -20,6 +22,19 @@ elif chose_picture == "2":
     path_to_picture = "cat_in_glasses.png"
 elif chose_picture == "3":
     print("You chose: surprised cat")
-    path_to_picture = "surprised_cat.png"
+    path_to_picture = "suprised_cat.png"
 
 print(path_to_picture)
+
+image = Image.open(path_to_picture)
+
+draw = ImageDraw.Draw(image)
+
+path_to_font = "./Tiny5/Tiny5-Regular.ttf"
+font = ImageFont.truetype(path_to_font, size = 40)
+
+draw.text((0, 0), top_text, font = font, fill = "black")
+draw.text((0, 300), bottom_text, font = font, fill = "white")
+
+image.save("new_meme.png")
+print("Image compiled successfully")
