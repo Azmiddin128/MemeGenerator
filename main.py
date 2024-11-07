@@ -34,11 +34,20 @@ image = Image.open(path_to_picture)
 
 draw = ImageDraw.Draw(image)
 
-path_to_font = "./Rubik_Wet_Paint/RubikWetPaint-Regular.ttf"
+path_to_font = "./Tiny5/Tiny5-Regular.ttf"
 font = ImageFont.truetype(path_to_font, size = 40)
 
-draw.text((0, 0), top_text, font = font, fill = "brown")
-draw.text((100, 1250), bottom_text, font = font, fill = "brown")
+text = draw.textbbox((0, 0), top_text, font)
+text_width = text[2]
+
+draw.text(((1011 - text_width) / 2, 10), top_text, font = font, fill = "white")
+
+
+text = draw.textbbox((0, 0), bottom_text, font)
+text_width = text[2]
+text_height = text[3]
+
+draw.text(((1011 - text_width) / 2, 1321 - text_height), bottom_text, font = font, fill = "white")
 
 image.save("new_meme.png")
 print("Image compiled successfully")
